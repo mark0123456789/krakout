@@ -12,6 +12,7 @@ public partial class MainWindow : Window
 {
     double Xseb = 5;
     double Yseb = 5;
+    double alapVseb = 5;
     int pontstam = 0;
     public MainWindow()
     {
@@ -29,13 +30,16 @@ public partial class MainWindow : Window
         var labdaY = Canvas.GetTop(labda);
         var labdaX = Canvas.GetLeft(labda);
 
-        if (labdaX > 950) Xseb = -5;
-        if (labdaX < 0) Xseb = 5;
-        if (labdaY > 550) { Yseb = -5;
-        lbpontszam.Content = --pontstam;
-        
+        if (labdaX > 950 || labdaX < 0) Xseb *= -1;
+        if (labdaY > 550) {
+            pontstam = 0;
+        lbpontszam.Content = 0;
+            Canvas.SetTop(labda, 0);
+        labdaY = 0;
+            Yseb = alapVseb;
+
         }
-        if (labdaY < 0) Yseb = 5;
+        if (labdaY < 0) Yseb *= -1;
 
         var jatekosX = Canvas.GetLeft(jatekos);
         var jatekosY = Canvas.GetTop(jatekos);
@@ -44,11 +48,11 @@ public partial class MainWindow : Window
             labdaY+ labda.Height > jatekosY&&
             labdaY< jatekosY +jatekos.Height)
         {
-            Yseb = -5;
+            Yseb *= -1.3;
             lbpontszam.Content = ++pontstam;
         }
 
         Canvas.SetLeft(labda, labdaX + Xseb);
-        Canvas.SetTop (labda, labdaY + Xseb);
+        Canvas.SetTop (labda, labdaY + Yseb);
     }
 }
