@@ -28,15 +28,19 @@ public partial class MainWindow : Window
 
         var labdaY = Canvas.GetTop(labda);
         var labdaX = Canvas.GetLeft(labda);
+
         if (labdaX > 950) Xseb = -5;
         if (labdaX < 0) Xseb = 5;
-        if (labdaY > 550) Yseb = -5;
+        if (labdaY > 550) { Yseb = -5;
+        lbpontszam.Content = --pontstam;
+        
+        }
         if (labdaY < 0) Yseb = 5;
 
         var jatekosX = Canvas.GetLeft(jatekos);
         var jatekosY = Canvas.GetTop(jatekos);
-        if (labdaX+ labda.Width> jatekosX &&
-            labdaX< jatekosX +jatekos.Width&&
+        if (labdaX + labda.Width> jatekosX &&
+            labdaX< jatekosX +jatekos.Width &&
             labdaY+ labda.Height > jatekosY&&
             labdaY< jatekosY +jatekos.Height)
         {
