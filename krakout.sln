@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "krakout", "krakout.csproj", "{CA97A4A4-80E5-40DA-803B-F317C039B91C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA97A4A4-80E5-40DA-803B-F317C039B91C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA97A4A4-80E5-40DA-803B-F317C039B91C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA97A4A4-80E5-40DA-803B-F317C039B91C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA97A4A4-80E5-40DA-803B-F317C039B91C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70571D2A-EF0F-4F01-B6D6-943C04501109}
+	EndGlobalSection
+EndGlobal
