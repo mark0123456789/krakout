@@ -20,17 +20,26 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-
-        var tegla = new Image();
-
-        tegla.Source = new BitmapImage(new Uri("tegla.jpg", UriKind.Relative));
-
-        tegla.Width = 90;
-        tegla.Height = 20;
-        tegla.Stretch = Stretch.Fill;
-        jatekter.Children.Add(tegla);
+        for (int j = 0; j < 5; j++)
+        {
 
 
+            for (int i = 0; i < 10; i++)
+            {
+
+
+                var tegla = new Image();
+
+                tegla.Source = new BitmapImage(new Uri("tegla.jpg", UriKind.Relative));
+
+                tegla.Width = 90;
+                tegla.Height = 20;
+                tegla.Stretch = Stretch.Fill;
+                Canvas.SetLeft(tegla, i * 100);
+                Canvas.SetTop(tegla, j * 30);
+                jatekter.Children.Add(tegla);
+            }
+        }
         labda.CacheMode = new BitmapCache();
        
         CompositionTarget.Rendering += Mozgatas;
@@ -50,12 +59,14 @@ public partial class MainWindow : Window
         var labdaY = Canvas.GetTop(labda);
         var labdaX = Canvas.GetLeft(labda);
 
-        if (labdaX > 950 || labdaX < 0) Xseb *= -1;
-        if (labdaY > 550) {
-            pontstam = 0;
-        lbpontszam.Content = 0;
-            Canvas.SetTop(labda, 0);
-        labdaY = 0;
+        if (labdaX > 980 || labdaX < 0) Xseb *= -1;
+        if (labdaY > 580) {
+            lbpontszam.Content = --pontstam;
+            lbpontszam.Content = 0;
+            labdaY = Canvas.GetTop(jatekos) - labda.Height;
+            labdaX = Canvas.GetLeft(jatekos) - jatekos.Width / 2;
+            Canvas.SetTop(labda,labdaX);
+            Canvas.SetLeft(labda,labdaY);
             Yseb = alapVseb;
 
         }
@@ -68,8 +79,24 @@ public partial class MainWindow : Window
             labdaY+ labda.Height > jatekosY&&
             labdaY< jatekosY +jatekos.Height)
         {
-            Yseb *= -1.3;
-            lbpontszam.Content = ++pontstam;
+            Yseb *= -1;
+         
+        }
+
+        foreach (var tegla in jatekter.Children.OfType<Image>())
+        {
+            var teglaX = Canvas.GetLeft(tegla);
+            var teglaY = Canvas.GetTop(tegla);
+            if (labdaX + labda.Width > teglaX &&
+                labdaX < teglaX + jatekos.Width &&
+                labdaY + labda.Height > teglaY &&
+                labdaY < teglaY + jatekos.Height)
+            {
+                Yseb *= -1;
+                jatekter.Children.Remove(tegla);
+                lbpontszam.Content = ++pontstam;
+                break;
+            }
         }
 
         Canvas.SetLeft(labda, labdaX + Xseb);
