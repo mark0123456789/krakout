@@ -17,10 +17,27 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        var ido = new DispatcherTimer();
-        ido.Interval = TimeSpan.FromMilliseconds(1);
-        ido.Tick += Mozgatas;
-        ido.Start();
+
+        var tegla = new Image();
+
+        tegla.Source = new BitmapImage(new Uri("tegla.jpg", UriKind.Relative));
+
+        tegla.Width = 90;
+        tegla.Height = 20;
+        tegla.Stretch = Stretch.Fill;
+        jatekter.Children.Add(tegla);
+
+
+        labda.CacheMode = new BitmapCache();
+       
+        CompositionTarget.Rendering += Mozgatas;
+        
+        Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 60 });
+
+        //var ido = new DispatcherTimer();
+        // ido.Interval = TimeSpan.FromMilliseconds(1);
+        // ido.Tick += Mozgatas;
+        // ido.Start();
     }
 
     private void Mozgatas(object? sender, EventArgs e)
