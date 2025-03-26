@@ -15,7 +15,7 @@ public partial class MainWindow : Window
 {
     double Xseb = 5;
     double Yseb = 5;
-    double alapVseb = 5;
+    double alapVseb = -5;
     int pontstam = 0;
     public MainWindow()
     {
